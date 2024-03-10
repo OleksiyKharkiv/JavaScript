@@ -3,7 +3,7 @@ const {MongoClient} = require('mongodb');
 
 // MongoDB database URL and port
 const url = 'mongodb://localhost:27017';
-const dbName = 'your_database_name';
+const dbName = 'userWorkout';
 
 // Function to execute the query
 async function executeQuery() {

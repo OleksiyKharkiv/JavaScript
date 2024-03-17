@@ -33,7 +33,6 @@ async function executeQuery() {
                     },
                     segmentCount: {$sum: {$size: '$segments'}}
                 }
-
             }
         ];
 

@@ -16,25 +16,18 @@ async function executeQuery() {
         const db = client.db(dbName);
 
         // Query for data aggregation
-        const pipeline = [
-            {
-                $group: {
-                    _id: {
-                        userId: '$created.userId',
-                        workoutType: '$workoutType',
-                        month: {$month: '$created.timestamp'},
-                        plannedBy: {
-                            $cond: [
-                                {$eq: ['$userId', '$created.userId']},
-                                'User',
-                                'Coach'
-                            ]
-                        }
-                    },
-                    segmentCount: {$sum: {$size: '$segments'}}
-                }
+        const pipeline = [{
+            $group: {
+                _id: {
+                    userId: '$created.userId',
+                    workoutType: '$workoutType',
+                    month: {$month: '$created.timestamp'},
+                    plannedBy: {
+                        $cond: [{$eq: ['$userId', '$created.userId']}, 'User', 'Coach']
+                    }
+                }, segmentCount: {$sum: {$size: '$segments'}}
             }
-        ];
+        }];
 
 
         const result = await db.collection('mats-workout.userWorkout').aggregate(pipeline).toArray();

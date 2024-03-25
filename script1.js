@@ -15,7 +15,7 @@ async function executeQuery() {
 
         const db = client.db(dbName);
 
-        // Query for data aggregation
+        // Query for  data aggregation
         const pipeline = [{
             $group: {
                 _id: {

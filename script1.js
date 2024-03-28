@@ -29,7 +29,6 @@ async function executeQuery() {
             }
         }];
 
-
         const result = await db.collection('mats-workout.userWorkout').aggregate(pipeline).toArray();
         console.log('Result of the query:', result);
     } catch (err) {

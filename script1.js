@@ -27,6 +27,7 @@ async function executeQuery() {
                     }
                 }, segmentCount: {$sum: {$size: '$segments'}}
             }
+
         }];
 
         const result = await db.collection('mats-workout.userWorkout').aggregate(pipeline).toArray();

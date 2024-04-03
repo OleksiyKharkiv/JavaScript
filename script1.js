@@ -27,7 +27,6 @@ async function executeQuery() {
                     }
                 }, segmentCount: {$sum: {$size: '$segments'}}
             }
-
         }];
 
         const result = await db.collection('mats-workout.userWorkout').aggregate(pipeline).toArray();
@@ -40,6 +39,5 @@ async function executeQuery() {
         console.log('Closed connection to the database');
     }
 }
-
 // Call the function to execute the query
 executeQuery();
